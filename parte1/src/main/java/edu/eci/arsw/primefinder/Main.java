@@ -1,12 +1,16 @@
 package edu.eci.arsw.primefinder;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Main {
+
+	private static List<Integer> primes = new LinkedList<>();
 
 	public static void main(String[] args) {
 		
-		PrimeFinderThread pft=new PrimeFinderThread(0, 30000000);
-		
-		pft.start();
+		PrimeFinder primeFinder = new PrimeFinder();
+		primeFinder.checkPrimes(0, 10000, 3);
 		
 		
 	}

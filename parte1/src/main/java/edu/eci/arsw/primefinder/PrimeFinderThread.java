@@ -5,10 +5,9 @@ import java.util.List;
 
 public class PrimeFinderThread extends Thread{
 
-	
 	int a,b;
 	
-	private List<Integer> primes=new LinkedList<Integer>();
+	private List<Integer> primes=new LinkedList<>();
 	
 	public PrimeFinderThread(int a, int b) {
 		super();
@@ -16,11 +15,12 @@ public class PrimeFinderThread extends Thread{
 		this.b = b;
 	}
 
+    @Override
 	public void run(){
 		for (int i=a;i<=b;i++){						
 			if (isPrime(i)){
 				primes.add(i);
-				System.out.println(i);
+				// System.out.print(i + " ");
 			}
 		}
 		
