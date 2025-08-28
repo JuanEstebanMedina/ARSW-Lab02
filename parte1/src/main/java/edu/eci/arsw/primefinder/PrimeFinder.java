@@ -54,6 +54,7 @@ public class PrimeFinder {
             thread.resumeThread();
         }
 
+        
         primesCount = 0;
 
         for (PrimeFinderThread thread : primeFinderThreadList) {

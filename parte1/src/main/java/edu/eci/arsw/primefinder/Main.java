@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		PrimeFinder primeFinder = new PrimeFinder();
-		primeFinder.checkPrimes(0, 100000000, 3);
+		primeFinder.checkPrimes(0, 30000000, 3);
 		
 		
 	}
