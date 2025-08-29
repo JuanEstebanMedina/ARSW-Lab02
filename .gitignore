@@ -4,4 +4,6 @@ solucion
 enunciado
 parte1/target
 parte2/target
-.vscode
+## VS Code
+.vscode/
+.settings/
