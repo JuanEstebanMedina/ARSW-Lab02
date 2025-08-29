@@ -17,70 +17,67 @@ Creación, puesta en marcha y coordinación de hilos.
 
 ---
 
-Parte II
+## Parte II -  Galgo Racing
 
 design of the program
 
 ![](./img/media/image2.png)
 
->Al iniciar la aplicación, hay un primer error evidente: los resultados (total recorrido y número del galgo ganador) son mostrados antes de que finalice la carrera como tal.
+>Upon starting the application, we identified a critical issue: **the results were displayed before the race actually finished**.
 
 First, we found a mistake when running the program, the results are shown before the race finish.
 
 <img src="img/6. firstExecutionGalgos.png">
 
-Then, we resolve the problem, putting a ".JOIN()" after de que los galgos (hilos) inicien su recorrido.
+We resolved this timing issue by implementing `.join()` method after the dog threads start their execution. This ensures that results are only displayed once all dogs have completed the race and a winner is determined.
 
-De esta manera, los resultados se muestran siempre y cuando todos los galgos hallan terminado la carrera y se provee un ganador.
+In this way, the results are shown as long as all the greyhounds have finished the race and a winner is provided.
 
 <img src="img/10. fixedWinnerMessage.png">
 
-Se observan los resultados en consola
+The results are displayed in the console.
 
 <img src="img/9. firstExecutionGalgos.png">
 
->identificamos las inconsistencias en los resultados de las
-    mismas viendo el ‘ranking’ mostrado en consola. A partir de esto, identificamos las regiones
-    críticas () del programa.
+>We identified the inconsistencies in their results by looking at the ranking shown in the console. From this, we identified the critical regions of the program.
 
-**Algunas de las inconsistencias que encontramos fueron:**
+**Some of the inconsistencies we found were:**
 
-- prueba #1
+- test #1
 
 <img src="img/7. firstExecutionGalgos.png">
 
-- prueba #2
+- test #2
 
 <img src="img/8. firstExecutionGalgos.png">
 
-Se evidencia que no hay un orden en especifico para las posiciones finales de los Galgos y se encuentra que muchos perros obtienen las mismas posiciones por lo que no hay una certeza de que el ganador sea el verdadero ganador.
+It is evident that there is no specific order for the final positions of the greyhounds, and many dogs end up with the same positions, so there is no certainty that the winner is the real winner.
 
-**La region crítica que determinamos fue:**
+**The critical region we determined was:**
 
 <img src="img/11. criticalRegion.png">
 
-varios hilos pueden interrumpir y modificar el valor de ultimaPosicionAlcanza, causando que se cumplan las incoherencias identificadas anteriormente
+Several threads can interrupt and modify the value of ultimaPosicionAlcanza, causing the inconsistencies identified earlier:
 
-1. Múltiples galgos con la misma posición
-2. Posiciones duplicadas
-3. Más de un galgo ganador
+1. Multiple greyhounds with the same position
+2. Duplicate positions
+3. More than one winning greyhound
 
->Utilizamos "synchronized" para organizar los hilos y que solo entren una vez a nuestra region crítica
+>We used **"synchronized"** to organize the threads so that they only enter our critical region once.
 
-Para eso sincronizamos la variable del registro de llegada que era la provocante de los problemas, y refactorizamos el código para mayor orden
+For this, we synchronized the variable of the arrival record, which was causing the problems, and we refactored the code for better organization.
 
 <img src="img/14. codeSynchronized.png">
 
-verificamos que todo funciona correctamente
+We verified that everything works correctly.
 
 <img src="img/12. testingSynchronized1.png">
 
 <img src="img/13. testingSynchronized2.png">
 
->Implementamos las funcionalidades de pausa y continuar. Con estas,
-    cuando se haga clic en ‘Stop’, todos los hilos de los galgos frenan, y cuando se haga clic en ‘Continue’ los mismos continuan con la carrera.
+>We implemented the pause and continue functionalities. With these, when ‘Stop’ is clicked, all the greyhound threads stop, and when ‘Continue’ is clicked, they resume the race.
 
-Para lo anterior,  instauramos una bandera que anuncia si un galgo esta o no suspendido, y mediante mecanismos como wait y notify se implementaron los nuevos botones funcionales.
+For this, we set up a flag that indicates whether a greyhound is suspended or not, and by using mechanisms such as wait and notify, the new functional buttons were implemented.
 
-Puede observarse en las clases Galgo y MainCanodromo en la carpeta "parte2"
+This can be seen in the Galgo and MainCanodromo classes in the _“parte2”_ folder.
 
