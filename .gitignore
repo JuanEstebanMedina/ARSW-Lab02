@@ -53,6 +53,10 @@ buildNumber.properties
 
 # OS-specific files
 .DS_Store
+
+parte1/target
+parte2/target
+
 .DS_Store?
 ._*
 .Spotlight-V100
