@@ -15,27 +15,31 @@
 
 *Creation, implementation, and coordination of threads.*
 
-> We work on a program that calculates prime numbers between two intervals, distributing the search for them among independent threads. At first, it has a single execution thread that searches for primes between 0 and 30,000,000. 
+> We worked on a program that calculates prime numbers between two intervals, distributing the search for them among independent threads. At first, it has a single execution thread that searches for primes between 0 and 30,000,000. 
 We had to execute it, open the operating system's process manager, and check how many cores are used by it.
 
 The test is somewhat affected by native processes of the computer and operating system.
 
-Testing execution with just 1 thread:
+**Testing execution with just 1 thread:**
+
 <img src="img/Test1Thread.png">
 
 > We had to modify the program so that, instead of solving the problem with a single thread, it does so with three, each of which will do one-third of the original problem. Also, had to review the use of the computer's cores once more.
 
-Testing execution with 3 threads:
+**Testing execution with 3 threads:**
+
 <img src="img/Test3Thread.png">
 
 > Lastly, we needed to modify the application so that 5 seconds after it starts running, all threads are stopped and the number of primes found so far is displayed. Then, wait for the user to press ENTER to resume execution.
 
 
-Testing with 30M
+**Testing with 30M**
+
 <img src="img/5. prueba30000000PartI.png">
 
+\
+**Testing with 100M**
 
-Testing with 100M
 <img src="img/1. prueba100000000PartI.png">
 
 
