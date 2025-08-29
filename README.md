@@ -1,22 +1,49 @@
-Escuela Colombiana de Ingeniería
+# ARSW-Lab02
+## Concurrent programming, race conditions, and thread synchronization.
 
-Arquitecturas de Software – ARSW
+**Colombian School of Engineering Julio Garavito**  
+**Software Architectures - ARSW**  
+**Laboratory Number 2**
 
-####Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
+**Members:**
+- Juan Esteban Medina Rivas
+- María Paula Sánchez Macías
 
-#####Parte I – Antes de terminar la clase.
+---
 
-Creación, puesta en marcha y coordinación de hilos.
+## Part I - PrimeFinder
 
-1. Revise el programa “primos concurrentes” (en la carpeta parte1), dispuesto en el paquete edu.eci.arsw.primefinder. Este es un programa que calcula los números primos entre dos intervalos, distribuyendo la búsqueda de los mismos entre hilos independientes. Por ahora, tiene un único hilo de ejecución que busca los primos entre 0 y 30.000.000. Ejecútelo, abra el administrador de procesos del sistema operativo, y verifique cuantos núcleos son usados por el mismo.
+*Creation, implementation, and coordination of threads.*
 
-2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
+> We worked on a program that calculates prime numbers between two intervals, distributing the search for them among independent threads. At first, it has a single execution thread that searches for primes between 0 and 30,000,000. 
+We had to execute it, open the operating system's process manager, and check how many cores are used by it.
 
-3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
+The test is somewhat affected by native processes of the computer and operating system.
+
+**Testing execution with just 1 thread:**
+
+<img src="img/Test1Thread.png">
+
+> We had to modify the program so that, instead of solving the problem with a single thread, it does so with three, each of which will do one-third of the original problem. Also, had to review the use of the computer's cores once more.
+
+**Testing execution with 3 threads:**
+
+<img src="img/Test3Thread.png">
+
+> Lastly, we needed to modify the application so that 5 seconds after it starts running, all threads are stopped and the number of primes found so far is displayed. Then, wait for the user to press ENTER to resume execution.
 
 
+**Testing with 30M**
 
-#####Parte II 
+<img src="img/5. prueba30000000PartI.png">
+
+\
+**Testing with 100M**
+
+<img src="img/1. prueba100000000PartI.png">
+
+
+## Parte II 
 
 
 Para este ejercicio se va a trabajar con un simulador de carreras de galgos (carpeta parte2), cuya representación gráfica corresponde a la siguiente figura:
